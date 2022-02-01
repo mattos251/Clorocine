@@ -1,5 +1,14 @@
 <?php include "./cabecalho.php" ?>
-<?php include "./cards.php" ?>
+<?php 
+include './bd_up.php';
+
+$conn = getConnection();
+
+$sql = "SELECT * FROM filmes";
+
+$stmt = $conn->prepare($sql);
+$filmes = $stmt->execute();
+?>
 
 
 <body>
@@ -36,27 +45,38 @@
 
     <div class="row">
         <!-- looping para automatiza a criação de cards -->
-        <?php foreach($filmes as $filme) : ?>
+        <?php while($filme = $stmt->fetch()) :?>
 
-            <div class="col s3">
+            <div class="col s3 m l">
                 <div class="card hoverable">
                     <div class="card-image">
                         <img src=" <?= $filme["poster"] ?> ">
-                        <a class="btn-floating halfway-fab waves-effect waves-light purple"><i class="material-icons">favorite_border</i></a>
+                        <a class="btn-floating halfway-fab waves-effect waves-light purple">
+                            <i class="material-icons">favorite_border</i>
+                        </a>
                     </div>
 
                     <div class="card-content">
                         <span class="card-title"> <?= $filme["titulo"] ?></span>
-                        <p class="valign-wrapper"><i class="material-icons amber-text">star</i><?= $filme["nota"] ?></p>
-                        <p><?= $filme["sinopse"] ?></p>
+                        <p class="valign-wrapper">
+                            <i class="material-icons amber-text">star</i> <?= $filme["nota"] ?>
+                        </p>
+                        <p><?= $filme["sinopse"] ?> </p>
                     </div>
                 </div>
             </div>
 
-        <?php endforeach ?>
-
-    </div>
-
-
+        <?php endwhile ?>
+    </div>  
 </body>
+
+<?php if( isset($_GET["msg"])) : ?>  
+
+    <script>
+        M.toast({
+            html:  '<?= $_GET["msg"] ?>';
+        });
+    </script>
+
+<?php endif ?>
 </html>

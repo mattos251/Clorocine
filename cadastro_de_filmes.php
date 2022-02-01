@@ -1,6 +1,6 @@
 <?php
 
-include '../database/database.php';
+include './bd_up.php';
 
 $conn = getConnection();
 
@@ -23,5 +23,11 @@ if($stmt->execute()){
 }else{
     echo 'erro ao salva';
 }
+
+
+
+
+
+
 
 ?>

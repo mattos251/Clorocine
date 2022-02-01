@@ -17,61 +17,59 @@
         </nav>
 
         <div class="row">
-            <div class="col s6 offset-s3">
-                <div class="card ">
-                    <div class="card-content">
-                        <span class="card-title">Cadastrar filme</span>
+            <form action="inserirFilme.php" method="POST">
+                <div class="col s6 offset-s3">
+                    <div class="card ">
+                        <div class="card-content">
+                            <span class="card-title">Cadastrar filme</span>
 
-                        <!-- input do titulo -->
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input  id="titulo" type="text" class="validate" require>
-                                <label for="titulo">Titulo do filme</label>
+                            <!-- input do titulo -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input  id="titulo" type="text" class="validate" name="titulo" required>
+                                    <label for="titulo">Titulo do filme</label>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- input da sinopse -->
+                            <!-- input da sinopse -->
 
-                        <div class="row">
-                            <form class="col s12">
+                            <div class="row">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="sinopse" class="materialize-textarea"></textarea>
+                                        <textarea name="sinopse" id="sinopse" class="materialize-textarea"></textarea>
                                         <label for="sinopse">Sinopse</label>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-
-                        <!-- input do nota -->
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input  id="nota" type="number" step=".1" min=0 max=10 class="validate" require>
-                                <label for="nota">Nota</label>
                             </div>
-                        </div>
 
-                        <form action="#">
+                            <!-- input do nota -->
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input  id="nota" name="nota" type="number" step=".1" min=0 max=10 class="validate" required>
+                                    <label for="nota">Nota</label>
+                                </div>
+                            </div>
+
+                           
                             <div class="file-field input-field">
                                 <div class="btn purple">
                                     <span>Capa</span>
-                                    <input type="file">
+                                    <input type="file" type="text">
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
+                                    <input class="file-path validate" type="text" name="poster">
                                 </div>
                             </div>
-                        </form>
+                            
 
-                    </div>
-                    <div class="card-action">
-                        <a class="btn waves-effect waves-light grey" href="galeria.php">cancelar</a>
-                        <a href="#" class="waves-effect waves-light btn purple">Cadastrar</a>
+                        </div>
+                        <div class="card-action">
+                            <a class="btn waves-effect waves-light grey" href="galeria.php">cancelar</a>
+                            <button type="submit" class="waves-effect waves-light btn purple">Cadastrar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>    
         </div>
-
+    </nav>
 </body>
-
-</html>
