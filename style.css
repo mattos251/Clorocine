@@ -1,0 +1,22 @@
+body{
+    background-color: #e5e5e5;
+}
+
+.nav-extended{
+ background-image: url("./img/ccc.jpg");
+ background-size: cover;
+ background-blend-mode: soft-light;
+}
+
+nav ul li.active{
+    border-bottom: solid 2px white;
+    background-color: transparent;
+}
+
+.tab a.active{
+    border-bottom: solid 2px white;
+}
+
+.nav-header h1{
+    text-shadow: 2px 2px 15px black;
+}
