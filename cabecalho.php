@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html leng="en">
 <head>
     <meta charset="UTF-8">
@@ -14,3 +14,4 @@
     <title>Clorocine</title>
 
 </head>
+</html>

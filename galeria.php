@@ -1,13 +1,13 @@
 <?php include "./cabecalho.php" ?>
+
 <?php 
-include './bd_up.php';
+session_start();
+require "./repository/FilmesRepositoryPDO.php";
+require "./util/mensagem.php";
 
-$conn = getConnection();
 
-$sql = "SELECT * FROM filmes";
-
-$stmt = $conn->prepare($sql);
-$filmes = $stmt->execute();
+$filmesRepository = new FilmesRepositoryPDO();
+$filmes =  $filmesRepository->listarTodos();
 ?>
 
 
@@ -45,38 +45,33 @@ $filmes = $stmt->execute();
 
     <div class="row">
         <!-- looping para automatiza a criação de cards -->
-        <?php while($filme = $stmt->fetch()) :?>
+        <?php foreach($filmes as $filme) :?>
 
             <div class="col s3 m l">
                 <div class="card hoverable">
                     <div class="card-image">
-                        <img src=" <?= $filme["poster"] ?> ">
+                        <img src=" <?= $filme->poster ?> ">
                         <a class="btn-floating halfway-fab waves-effect waves-light purple">
                             <i class="material-icons">favorite_border</i>
                         </a>
                     </div>
 
                     <div class="card-content">
-                        <span class="card-title"> <?= $filme["titulo"] ?></span>
+                        <span class="card-title"> <?= $filme->titulo ?></span>
                         <p class="valign-wrapper">
-                            <i class="material-icons amber-text">star</i> <?= $filme["nota"] ?>
+                            <i class="material-icons amber-text">star</i> <?= $filme->nota ?>
                         </p>
-                        <p><?= $filme["sinopse"] ?> </p>
+                        <p><?= $filme->sinopse ?> </p>
                     </div>
                 </div>
             </div>
 
-        <?php endwhile ?>
-    </div>  
+        <?php endforeach ?>
+    </div>
+
+    <?= Mensagem::mostrar(); ?> 
+
 </body>
 
-<?php if( isset($_GET["msg"])) : ?>  
 
-    <script>
-        M.toast({
-            html:  '<?= $_GET["msg"] ?>';
-        });
-    </script>
-
-<?php endif ?>
 </html>

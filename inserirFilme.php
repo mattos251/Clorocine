@@ -1,30 +1,23 @@
 <?php
-include './bd_up.php';
-$conn = getConnection();
+session_start();
 
-$titulo  = $_POST["titulo"] ;
-$sinopse = $_POST["sinopse"];
-$nota    = $_POST["nota"];
-$postar  = $_POST["poster"];
+require "./repository/FilmesRepositoryPDO.php";
+require "./model/Filme.php";
 
+$filmesRepository = new FilmesRepositoryPDO();
+$filme = new Filme();
 
+$filme->titulo  = $_POST["titulo"];
+$filme->sinopse = $_POST["sinopse"];
+$filme->nota    = $_POST["nota"];
+$filme->postar  = $_POST["poster"];
 
-$sql = 'INSERT INTO filmes ( titulo, sinopse, poster, nota ) VALUES ( :titulo, :sinopse, :poster , :nota )';
+if($filmesRepository->salvar($filme))
+    $_SESSION["msg"] = "Filmes inseridos com sucesso";
 
+else
+    $_SESSION["msg"] = "erro ao inserir o filme";
 
-$stmt = $conn->prepare($sql);
-$stmt->bindValue(':titulo', $titulo, PDO::PARAM_STR);
-$stmt->bindValue(':sinopse' , $sinopse, PDO::PARAM_STR );
-$stmt->bindValue(':poster' , $poster, PDO::PARAM_STR);
-$stmt->bindValue(':nota' , $nota);
-
-if($stmt->execute()){
-    echo'salvo meu parceiro';
-
-}else{
-    echo 'erro ao salva'. $conn->json_last_error_msg;
-}
-
-header("Location: galeria.php?msg=Filme+cadastrado+com+sucesso");
+header("Location: galeria.php");
 
 ?>
