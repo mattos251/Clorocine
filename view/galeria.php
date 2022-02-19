@@ -1,7 +1,7 @@
-<?php include "./cabecalho.php" ?>
+<?php include "cabecalho.php" ?>
 
 <?php 
-session_start();
+session_start(); 
 require "./repository/FilmesRepositoryPDO.php";
 require "./util/mensagem.php";
 

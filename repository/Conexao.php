@@ -8,7 +8,7 @@ class Conexao{
 
         try{
 
-            $pdo = new PDO($dsn, $user, $pass);
+            $pdo = new PDO($dsn,$user,$pass);
             return $pdo;
 
         }catch(PDOException $ex){

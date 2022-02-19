@@ -1,5 +1,8 @@
+
 <?php 
-require './repository/Conexao.php';
+require 'Conexao.php';
+
+
 /**
 *
 * @return \PDO
@@ -44,4 +47,3 @@ class FilmesRepositoryPDO{
     }
         
 }
-?>

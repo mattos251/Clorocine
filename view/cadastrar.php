@@ -1,4 +1,4 @@
-<?php include "./cabecalho.php" ?>
+<?php include "cabecalho.php" ?>
 
 <body>
     <nav class="nav-extended purple lighten-3">
@@ -17,7 +17,7 @@
         </nav>
 
         <div class="row">
-            <form action="inserirFilme.php" method="POST">
+            <form action="../inserirFilme.php" method="POST">
                 <div class="col s6 offset-s3">
                     <div class="card ">
                         <div class="card-content">

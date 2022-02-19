@@ -1,12 +1,14 @@
 <?php
 
 $rota = $_SERVER["REQUEST_URI"];
+var_dump($rota);
 
 switch($rota){
-    case "clorocine/clorocine/":
-        require "./galeria.php";
-    case "clorocine/clorocine/novo":
-        require "./cadastrar.php";
+    case '/':
+        require "view/galeria.php";
+        break;
+    case '/novo':
+        require "view/cadastrar.php";
 }
 
 ?>
