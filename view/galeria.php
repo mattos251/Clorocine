@@ -1,13 +1,11 @@
 <?php include "cabecalho.php" ?>
 
 <?php 
-session_start(); 
-require "./repository/FilmesRepositoryPDO.php";
+// session_start(); 
 require "./util/mensagem.php";
 
-
-$filmesRepository = new FilmesRepositoryPDO();
-$filmes =  $filmesRepository->listarTodos();
+$controller = new FilmesController();
+$filmes = $controller->index();
 ?>
 
 
@@ -18,8 +16,8 @@ $filmes =  $filmesRepository->listarTodos();
         <div class="nav-wrapper ">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="active"><a href="galeria.php">galeria</a></li>
-                <li><a href="cadastrar.php">Cadastrar</a></li>
+                <li class="active"><a href="/clorocine/">galeria</a></li>
+                <li><a href="/clorocine/novo">Cadastrar</a></li>
             </ul>
         </div>
 
@@ -50,7 +48,7 @@ $filmes =  $filmesRepository->listarTodos();
             <div class="col s3 m l">
                 <div class="card hoverable">
                     <div class="card-image">
-                        <img src=" <?= $filme->poster ?> ">
+                        <img src= "<?= $filme->poster ?>" >
                         <a class="btn-floating halfway-fab waves-effect waves-light purple">
                             <i class="material-icons">favorite_border</i>
                         </a>
