@@ -26,7 +26,7 @@ class FilmesController{
             $_SESSION["msg"] = "Filmes inseridos com sucesso";
 
         else
-            $_SESSION["msg"] = "erro ao inserir o filme";
+            $_SESSION["msg"] = "Erro ao inserir o filme";
 
         header("Location: /clorocine/");
 
@@ -34,7 +34,7 @@ class FilmesController{
     }
 
     private function savePoster($file){
-        $posterDir = "../img/poster/";
+        $posterDir = "img/posters";
         $posterPath = $posterDir . basename($file["poster_file"]["name"]);
         $posterTmp = $file["poster_file"]["tmp_name"];
         if(move_uploaded_file($posterTmp, $posterPath)){

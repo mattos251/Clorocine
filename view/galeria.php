@@ -48,7 +48,10 @@ $filmes = $controller->index();
             <div class="col s3 m l">
                 <div class="card hoverable">
                     <div class="card-image">
-                        <img src= "<?= $filme->poster ?>" >
+                        <div id="img">
+                            <img src= "<?= $filme->poster ?>" >
+                        </div>
+                        
                         <a class="btn-floating halfway-fab waves-effect waves-light purple">
                             <i class="material-icons">favorite_border</i>
                         </a>
